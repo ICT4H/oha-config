@@ -1,0 +1,228 @@
+<div class="dashboard-section">
+    <section class="dashboard-section">
+        <h2>
+            {{section.title}}
+        </h2>
+        <!DOCTYPE html>
+        <html lang="en">
+
+        <head>
+
+
+            <!-- Styles -->
+            <link href="/bahmni_config/openmrs/apps/customDisplayControl/css/app.min.css" rel="stylesheet">
+            <link href="/bahmni_config/openmrs/apps/customDisplayControl/css/custom.css" rel="stylesheet">
+
+            <!-- Fonts -->
+            <link href='https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,800%7COpen+Sans:300,400,500,600,700,800%7CMontserrat:400,700'
+                  rel='stylesheet' type='text/css'>
+
+            <!-- Favicons -->
+            <link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32">
+            <link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16">
+
+            <link href="/bahmni_config/openmrs/apps/customDisplayControl/css/kendo.ui.min.css" rel="stylesheet" />
+            <link href="/bahmni_config/openmrs/apps/customDisplayControl/css/kendo.bootstrap.min.css" rel="stylesheet" />
+            <link href="/bahmni_config/openmrs/apps/customDisplayControl/css/gv.bootstrap-form.css" rel="stylesheet" type="text/css" />
+            <link href="/bahmni_config/openmrs/apps/customDisplayControl/css/app.css" rel="stylesheet">
+
+            <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+            <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+            <![endif]-->
+            <!-- Fav and touch icons -->
+            <!-- Scripts -->
+
+            <style>
+                .transparent-nav .site-navigation .nav-menu a,
+                .transparent-nav .site-navigation .navbar-toggle {
+                    color: #666 !important;
+                }
+            </style>
+
+            <!-- Favicons -->
+            <link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32">
+            <link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16">
+        </head>
+
+        <body class="sticky-nav transparent-nav">
+
+        <!-- Main container -->
+        <main id="app">
+            <!-- learn more section-->
+            <div class="container">
+                <div class="row m-t-25">
+                    <div class="col-xs-12 col-sm-8">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Configure Request</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-xs-5">
+                                        <form class="form-horizontal">
+                                            <!-- /Form Item -->
+                                            <!--<div class="form-group">-->
+                                                <!--<label for="region" class="col-sm-4 control-label">Region-->
+                                                    <!--<span class="required-sign">*</span>-->
+                                                <!--</label>-->
+                                                <!--<div class="col-sm-8">-->
+                                                    <!--&lt;!&ndash;<select name="region" id="region" class="form-control">&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;<option value="AFRD">&ndash;&gt;-->
+                                                            <!--&lt;!&ndash;AFRD - Algeria, Angola, Benin, Burkina Faso, Cameroon, Cape Verde, Chad, Comoros, Equatorial Guinea, Gabon, Gambia, Ghana,&ndash;&gt;-->
+                                                            <!--&lt;!&ndash;Guinea, Guinea-Bissau, Liberia, Madagascar, Mali, Mauritania, Mauritius,&ndash;&gt;-->
+                                                            <!--&lt;!&ndash;Niger, Nigeria, Sao Tome And Principe, Senegal, Seychelles, Sierra&ndash;&gt;-->
+                                                            <!--&lt;!&ndash;Leone, Togo&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;</option>&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;<option value="AFRE">&ndash;&gt;-->
+                                                            <!--&lt;!&ndash;AFRE - Botswana, Burundi, Central African Republic, Congo, Co^te d’Ivoire, Democratic Republic of The Congo, Eritrea, Ethiopia,&ndash;&gt;-->
+                                                            <!--&lt;!&ndash;Kenya, Lesotho, Malawi, Mozambique, Namibia, Rwanda, South Africa,&ndash;&gt;-->
+                                                            <!--&lt;!&ndash;Swaziland, Uganda, United Republic of Tanzania, Zambia, Zimbabwe&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;</option>&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;<option value="AMRA">AMRA - Canada*, Cuba, United States of America*</option>&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;<option value="AMRB">&ndash;&gt;-->
+                                                            <!--&lt;!&ndash;AMRB - Antigua and Barbuda, Argentina, Bahamas, Barbados, Belize, Brazil, Chile, Colombia, Costa Rica, Dominica, Dominican&ndash;&gt;-->
+                                                            <!--&lt;!&ndash;Republic, El Salvador, Grenada, Guyana, Honduras, Jamaica, Mexico,&ndash;&gt;-->
+                                                            <!--&lt;!&ndash;Panama, Paraguay, Saint Kitts And Nevis, Saint Lucia, Saint Vincent&ndash;&gt;-->
+                                                            <!--&lt;!&ndash;and The Grenadines, Suriname, Trinidad and Tobago, Uruguay, Venezuela&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;</option>&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;<option value="AMRD">&ndash;&gt;-->
+                                                            <!--&lt;!&ndash;AMRD - Bolivia, Ecuador, Guatemala, Haiti, Nicaragua, Peru&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;</option>&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;<option value="EMRB">&ndash;&gt;-->
+                                                            <!--&lt;!&ndash;EMRB - Bahrain, Iran (Islamic Republic of), Jordan, Kuwait, Lebanon, Libyan Arab Jamahiriya, Oman, Qatar, Saudi Arabia, Syrian&ndash;&gt;-->
+                                                            <!--&lt;!&ndash;Arab Republic, Tunisia, United Arab Emirates&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;</option>&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;<option value="EMRD">EMRD - Afghanistan, Djibouti, Egypt, Iraq, Morocco, Pakistan, Somalia,&ndash;&gt;-->
+                                                            <!--&lt;!&ndash;Sudan, Yemen</option>&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;<option value="EURA">EURA - Andorra, Austria, Belgium, Croatia, Cyprus, Czech Republic, Denmark,&ndash;&gt;-->
+                                                            <!--&lt;!&ndash;Finland, France, Germany, Greece, Iceland, Ireland, Israel, Italy,&ndash;&gt;-->
+                                                            <!--&lt;!&ndash;Luxembourg, Malta, Monaco, Netherlands, Norway, Portugal, San Marino,&ndash;&gt;-->
+                                                            <!--&lt;!&ndash;Slovenia, Spain, Sweden, Switzerland, United Kingdom</option>&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;<option value="EURB">EURB - Albania, Armenia, Azerbaijan, Bosnia And Herzegovina, Bulgaria,&ndash;&gt;-->
+                                                            <!--&lt;!&ndash;Georgia, Kyrgyzstan, Poland, Romania, Serbia and Montenegro, Slovakia,&ndash;&gt;-->
+                                                            <!--&lt;!&ndash;Tajikistan, The Former Yugoslav Republic of Macedonia, Turkey, Turkmenistan,&ndash;&gt;-->
+                                                            <!--&lt;!&ndash;Uzbekistan&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;</option>&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;<option value="EURC">EURC - Belarus, Estonia, Hungary, Kazakhstan, Latvia, Lithuania, Republic&ndash;&gt;-->
+                                                            <!--&lt;!&ndash;of Moldova, Russian Federation, Ukraine</option>&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;<option value="SEARB">SEARB - Indonesia, Sri Lanka, Thailand</option>&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;<option value="SEARD">&ndash;&gt;-->
+                                                            <!--&lt;!&ndash;SEARD - Bangladesh, Bhutan, Democratic People’s Republic of Korea, India, Maldives, Myanmar, Nepal&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;</option>&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;<option value="WPRB">WPRB - Cambodia, China, Cook Islands, Democratic People’s Republic of&ndash;&gt;-->
+                                                            <!--&lt;!&ndash;Korea, Fiji, Kiribati, Lao People’s Democratic Republic, Malaysia,&ndash;&gt;-->
+                                                            <!--&lt;!&ndash;Marshall Islands, Micronesia (Federated States of), Mongolia, Nauru,&ndash;&gt;-->
+                                                            <!--&lt;!&ndash;Niue, Palau, Papua New Guinea, Philippines, Samoa, Solomon Islands,&ndash;&gt;-->
+                                                            <!--&lt;!&ndash;Tonga, Tuvalu, Vanuatu, Viet Nam</option>&ndash;&gt;-->
+                                                    <!--&lt;!&ndash;</select>&ndash;&gt;-->
+                                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                            <!--</div>-->
+                                            <!-- ./Form Item -->
+
+                                            <!--&lt;!&ndash; /Form Item &ndash;&gt;-->
+                                            <div class="form-group">
+                                                <label for="age" class="col-sm-4 control-label">Age</label>
+                                                <div class="col-sm-8">
+                                                    <input  ng-model="oha.age" id="age" type="number" min="30" max="75" step="1" ng-model="oha.age">
+                                                </div>
+                                            </div>
+                                            <!--&lt;!&ndash; ./Form Item &ndash;&gt;-->
+
+                                            <!--&lt;!&ndash; /Form Item &ndash;&gt;-->
+                                            <!--<div class="form-group">-->
+                                                <!--<label for="gender" class="col-sm-4 control-label">Gender-->
+                                                    <!--<span class="required-sign">*</span>-->
+                                                <!--</label>-->
+                                                <!--<div class="col-sm-8">-->
+                                                    <!--<div class="radio">-->
+                                                        <!--<label>-->
+                                                            <!--<input id="mGender" type="radio" name="gender" value="M" ng-model="oha.gender">Male</label>-->
+                                                    <!--</div>-->
+                                                    <!--<div class="radio">-->
+                                                        <!--<label>-->
+                                                            <!--<input id="fGender" type="radio" name="gender" value="F" ng-model="oha.gender" checked>Female</label>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                            <!-- ./Form Item -->
+                                        </form>
+                                    </div>
+
+                                    <div class="col-xs-7">
+                                        <form class="form-horizontal">
+                                            <div class="form-group">
+                                                <label for="diabetes" class="col-sm-4 control-label">Has diabetes</label>
+                                                <div class="col-sm-8">
+                                                    <div class="on-off-switch">
+                                                        <input type="checkbox" id="diabetes" ng-model="oha.hasDiabetes" />
+                                                        <label for="diabetes">Toggle</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="smoking" class="col-sm-4 control-label">Smoker</label>
+                                                <div class="on-off-switch col-sm-8">
+                                                    <input type="checkbox" id="smoking" ng-model="oha.isCurrentSmoker"  />
+                                                    <label for="smoking">Toggle</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="sbp" class="col-sm-4 control-label">Blood Pressure (SBP)</label>
+                                                <div class="col-sm-8">
+                                                    <input id="sbp" type="number" min="90" max="200" step="1"  ng-model="oha.sbp">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="cholesterol" class="col-sm-4 control-label">Total Cholesterol</label>
+                                                <div class="col-sm-3">
+                                                    <input id="cholesterol" class="form-control" type="number" step="0.1" ng-model="oha.totalCholesterol" >
+                                                </div>
+
+                                                <div class="col-sm-5">
+                                                    <label>
+                                                        <input id="mm" type="radio" name="cholesterolUnit" value="mmol/l" ng-model="oha.cholesterolUnit" checked> mmol/L</label>
+                                                    <label>
+                                                        <input id="mg" type="radio" name="cholesterolUnit" value="mg/dL" ng-model="oha.cholesterolUnit" > mg/dL</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="col-sm-8">
+                                                    <input id="submit" type="button" ng-click="calculateHearts()" value="Submit">
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div><b>Your CVD risk is: </b>{{cvdRisk}}</div>
+            <div><b>Follow-up: </b> {{cvdFollowUP}}</div>
+            <div><b>Advice (for provider):</b></div>
+            <ul>
+                <li ng-repeat="x in cvdAdvice">=> {{x}}</li>
+
+                <!--<li  ng-repeat="advice in {{cvdAdvice}}">-->
+            </ul>
+            <!--<div>{{cvdAdvice}}</div>-->
+            <div><b>Diabetes Risk: </b>{{diabeteseRisk}}</div>
+            <div><b>Diabetes Advice:</b>  {{diabeteseAdvice}}</div>
+            <div></div>
+            <div><b>Smoking Advice:</b>  {{smokingAdvice}}</div>
+        </main>
+        <!-- END Main container -->
+        </body>
+
+        </html>
+    </section>
+</div>
