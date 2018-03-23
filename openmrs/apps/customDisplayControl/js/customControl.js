@@ -199,146 +199,187 @@ angular.module('bahmni.common.displaycontrol.custom')
 }]).directive('openHealthAlgorithms', ['$http', '$q','appService', 'spinner', 'observationsService',
   function ($http, $q, appService, spinner, observationsService) {
   var link = function ($scope) {
-    $scope.contentUrl = appService.configBaseUrl() + "/customDisplayControl/views/openHealthAlgorithms.html";
-    $scope.oha = {
-      hasDiabetes: false,
-      isCurrentSmoker: false,
-      sbp: 100,
-      age: 50,
-      totalCholesterol: 5.2,
-      cholesterolUnit: "mmol/l"
-    };
+      $scope.contentUrl = appService.configBaseUrl() + "/customDisplayControl/views/openHealthAlgorithms.html";
+      $scope.oha = {
+          hasDiabetes: false,
+          isCurrentSmoker: false,
+          sbp: 100,
+          age: 50,
+          totalCholesterol: 5.2,
+          cholesterolUnit: "mmol/l"
+      };
 
-    var conceptNames = ["OHA Assessment"];
+      var conceptNames = ["Systolic BP","Diastolic BP","Current","Follow Up Interval"];
 
-    var getCVDRisk = function () {
-      var conditions = [ "asthma", "tuberculosis" ];
+      var getCVDRisk = function () {
+          var conditions = ["asthma", "tuberculosis"];
 
-      if($scope.oha.hasDiabetes) {
-        conditions.push("diabetes");
-      }
-
-      return $http.post('https://cors-anywhere.herokuapp.com/https://developer.openhealthalgorithms.org/api/openhealth/demo/hearts',
-        {
-          "API_KEY": "NWFhMzBkMWMzNWM2Nw==",
-          "ALGORITHM_ID": "5aa30d1c35cb2",
-          "data": {
-            "request": {
-              "api_key": "4325872943oeqitrqet7",
-              "api_secret": "3459823jfweureitu",
-              "request_api": "https://developers.openhealthalgorithms.org/algos/hearts/",
-              "country_code": "D",
-              "response_type": "COMPLETE"
-            },
-            "body": {
-              "region": "AFRD",
-              "last_assessment": {
-                "assessment_date": "",
-                "cvd_risk": "20"
-              },
-              "demographics": {
-                "gender": $scope.patient.gender,
-                "age": $scope.oha.age,
-                "dob": [
-                  "computed",
-                  "01/10/1987"
-                ],
-                "occupation": "office_worker",
-                "monthly_income": ""
-              },
-              "measurements": {
-                "height": [
-                  1.5,
-                  "m"
-                ],
-                "weight": [
-                  70,
-                  "kg"
-                ],
-                "waist": [
-                  99,
-                  "cm"
-                ],
-                "hip": [
-                  104,
-                  "cm"
-                ],
-                "sbp": [
-                  $scope.oha.sbp,
-                  "sitting"
-                ],
-                "dbp": [
-                  91,
-                  "sitting"
-                ]
-              },
-              "smoking": {
-                "current": $scope.oha.isCurrentSmoker ? 1 : 0,
-                "ex_smoker": 1,
-                "quit_within_year": 0
-              },
-              "physical_activity": "120",
-              "diet_history": {
-                "fruit": 1,
-                "veg": 6,
-                "rice": 2,
-                "oil": "olive"
-              },
-              "medical_history": {
-                "conditions": conditions
-              },
-              "allergies": {},
-              "medications": [
-                "anti_hypertensive",
-                "statin",
-                "antiplatelet",
-                "bronchodilator"
-              ],
-              "family_history": [
-                "cvd"
-              ],
-              "pathology": {
-                "bsl": {
-                  "type": "random",
-                  "units": "mg/dl",
-                  "value": 80
-                },
-                "cholesterol": {
-                  "type": "fasting",
-                  "units": $scope.oha.cholesterolUnit,
-                  "total_chol": $scope.oha.totalCholesterol,
-                  "hdl": 100,
-                  "ldl": 240
-                }
-              }
-            }
+          if ($scope.oha.hasDiabetes) {
+              conditions.push("diabetes");
           }
-        },
-        { headers: { 'Access-Control-Allow-Origin': '*' }}
-      );
 
-    };
+          return $http.post('https://cors-anywhere.herokuapp.com/https://developer.openhealthalgorithms.org/api/openhealth/demo/hearts',
+              {
+                  "API_KEY": "NWFhMzBkMWMzNWM2Nw==",
+                  "ALGORITHM_ID": "5aa30d1c35cb2",
+                  "data": {
+                      "request": {
+                          "api_key": "4325872943oeqitrqet7",
+                          "api_secret": "3459823jfweureitu",
+                          "request_api": "https://developers.openhealthalgorithms.org/algos/hearts/",
+                          "country_code": "D",
+                          "response_type": "COMPLETE"
+                      },
+                      "body": {
+                          "region": "AFRD",
+                          "last_assessment": {
+                              "assessment_date": "",
+                              "cvd_risk": "20"
+                          },
+                          "demographics": {
+                              "gender": $scope.patient.gender,
+                              "age": $scope.oha.age,
+                              "dob": [
+                                  "computed",
+                                  "01/10/1987"
+                              ],
+                              "occupation": "office_worker",
+                              "monthly_income": ""
+                          },
+                          "measurements": {
+                              "height": [
+                                  1.5,
+                                  "m"
+                              ],
+                              "weight": [
+                                  70,
+                                  "kg"
+                              ],
+                              "waist": [
+                                  99,
+                                  "cm"
+                              ],
+                              "hip": [
+                                  104,
+                                  "cm"
+                              ],
+                              "sbp": [
+                                  $scope.oha.sbp,
+                                  "sitting"
+                              ],
+                              "dbp": [
+                                  91,
+                                  "sitting"
+                              ]
+                          },
+                          "smoking": {
+                              "current": $scope.oha.isCurrentSmoker ? 1 : 0,
+                              "ex_smoker": 1,
+                              "quit_within_year": 0
+                          },
+                          "physical_activity": "120",
+                          "diet_history": {
+                              "fruit": 1,
+                              "veg": 6,
+                              "rice": 2,
+                              "oil": "olive"
+                          },
+                          "medical_history": {
+                              "conditions": conditions
+                          },
+                          "allergies": {},
+                          "medications": [
+                              "anti_hypertensive",
+                              "statin",
+                              "antiplatelet",
+                              "bronchodilator"
+                          ],
+                          "family_history": [
+                              "cvd"
+                          ],
+                          "pathology": {
+                              "bsl": {
+                                  "type": "random",
+                                  "units": "mg/dl",
+                                  "value": 80
+                              },
+                              "cholesterol": {
+                                  "type": "fasting",
+                                  "units": $scope.oha.cholesterolUnit,
+                                  "total_chol": $scope.oha.totalCholesterol,
+                                  "hdl": 100,
+                                  "ldl": 240
+                              }
+                          }
+                      }
+                  }
+              },
+              {headers: {'Access-Control-Allow-Origin': '*'}}
+          );
 
-      spinner.forPromise(observationsService.fetch($scope.patient.uuid, conceptNames, "latest", undefined, $scope.visitUuid, undefined).then(function (response) {
-          var observations = response.data;
+      };
 
-      }));
-    spinner.forPromise($q.all([getCVDRisk()]).then(function (response) {
-      var data = response[0].data;
-      $scope.cvdRisk = data.cvd_assessment.cvd_risk_result ? data.cvd_assessment.cvd_risk_result.risk : 0;
-    }));
+       spinner.forPromise(observationsService.fetch($scope.patient.uuid, conceptNames, undefined, 2, $scope.visitUuid, undefined).then(function (response) {
+           var observations = response.data;
+           $scope.groupedObs = _.groupBy(observations,"encounterDateTime");
+           $scope.dates = Object.keys($scope.groupedObs).reverse();
+           $scope.smoking = [];
+           $scope.sbp = [];
+           $scope.dbp = [];
+           $scope.followUpInterval = $scope.groupedObs[$scope.dates[0]].filter(function(item){ return item.conceptNameToDisplay == "Follow Up Interval" })[0].value;
+           $scope.reviewDate = parseInt($scope.dates[0])+$scope.followUpInterval*30*24*3600*1000;
+
+           for(var i =0;i<$scope.dates.length;i++){
+               $scope.smoking.push($scope.groupedObs[$scope.dates[i]].filter(function(item){ return item.conceptNameToDisplay == "Current" })[0].value);
+               $scope.sbp.push($scope.groupedObs[$scope.dates[i]].filter(function(item){ return item.conceptNameToDisplay == "Systolic BP" })[0].value);
+               $scope.dbp.push($scope.groupedObs[$scope.dates[i]].filter(function(item){ return item.conceptNameToDisplay == "Diastolic BP" })[0].value);
+           }
+           console.log($scope.reviewDate);
+
+       }));
+      // spinner.forPromise($q.all([getCVDRisk()]).then(function (response) {
+      //     var data = response[0].data;
+      //     $scope.cvdRisk = data.cvd_assessment.cvd_risk_result ? data.cvd_assessment.cvd_risk_result.risk : 0;
+      // }));
+
+
+      // $scope.mapCarePlans = function (data) {
+      //     var carePlan={};
+      //     if(data.cvd_assessment.guidelines && data.cvd_assessment.guidelines.advice && data.cvd_assessment.guidelines.advice.length>0 ){
+      //         var advices= data.cvd_assessment.guidelines.advice;
+      //         for(var i=0;i<advices.length;i++){
+      //
+      //         }
+      //         //
+      //         // var carePlan = {
+      //         //    "title" =
+      //         //     Item.value =
+      //         //         item. target =
+      //         //             Item.recommendation
+      //         // Item.follow-up-interval = 3
+      //         // Item.follow-up-unit = months
+      //         // Item.referred = true / false
+      //         // Item.referred.location =
+      //         //     Item.referral.program = [sms message bank, application end-point]
+      //         // Item.next_assessment_date = [calculated]
+      //
+      //     };
+      //     }
+      // };
 
 
 
     $scope.calculateHearts = function () {
       spinner.forPromise(getCVDRisk().then(function (response) {
         var data = response.data;
-        $scope.cvdRisk = data.cvd_assessment.cvd_risk_result ? data.cvd_assessment.cvd_risk_result.risk_range: 0;
-        $scope.cvdFollowUP = data.cvd_assessment.guidelines ? data.cvd_assessment.guidelines.follow_up_message : "No Followup";
+        $scope.cvdRisk = data.cvd_assessment.cvd_risk_result ? data.cvd_assessment.cvd_risk_result.risk: 0;
+        $scope.cvdFollowUP = data.cvd_assessment.guidelines ? data.cvd_assessment.guidelines.follow_up_interval : 3;
         $scope.cvdAdvice = data.cvd_assessment.guidelines ? data.cvd_assessment.guidelines.advice : "No Followup";
         $scope.diabeteseRisk = data.diabetes ? data.diabetes.value : 0;
         $scope.diabeteseAdvice = data.diabetes.output ? data.diabetes.output[3]? data.diabetes.output[3]:"No Advice" : "No Advice";
         $scope.smokingAdvice = data.lifestyle.smoking.output ? data.lifestyle.smoking.output[3]? data.lifestyle.smoking.output[3]:"No Advice" : "No Advice";
+        $scope.management = data.cvd_assessment.guidelines ? data.cvd_assessment.guidelines.management : {};
+
       }));
     }
   };

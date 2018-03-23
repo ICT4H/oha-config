@@ -1,4 +1,3 @@
-<div class="dashboard-section">
     <section class="dashboard-section">
         <h2>
             {{section.title}}
@@ -206,7 +205,45 @@
                 </div>
             </div>
 
-            <div><b>Your CVD risk is: </b>{{cvdRisk}}</div>
+            <div class="col-xs-12">
+                <h2 >CVD Risk</h2>
+                <div id="cvdRisk">
+                    <svg height="100%" version="1.1" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="overflow: hidden; position: relative;">
+                        <desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Created with Raphaël 2.1.4</desc>
+                        <defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+                            <filter id="inner-shadow-cvdRisk">
+                                <feOffset dx="0" dy="3"></feOffset>
+                                <feGaussianBlur result="offset-blur" stdDeviation="5"></feGaussianBlur>
+                                <feComposite operator="out" in="SourceGraphic" in2="offset-blur" result="inverse"></feComposite>
+                                <feFlood flood-color="black" flood-opacity="0.2" result="color"></feFlood>
+                                <feComposite operator="in" in="color" in2="inverse" result="shadow"></feComposite>
+                                <feComposite operator="over" in="shadow" in2="SourceGraphic"></feComposite>
+                            </filter>
+                        </defs>
+                        <path fill="#edebeb" stroke="none" d="M88.55,124.8L71,124.8A78,78,0,0,1,227,124.8L209.45,124.8A60.45,60.45,0,0,0,88.55,124.8Z" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+                        <path ng-if="cvdRisk=='10'" fill="#c9d107" stroke="none" d="M88.55,124.8L71,124.8A78,78,0,0,1,85.8966744387541,78.95275032118708L100.09492269003442,89.26838149891998A60.45,60.45,0,0,0,88.55,124.8Z" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+                        <path ng-if="cvdRisk=='20'" fill="#e9cb03" stroke="none" d="M88.55,124.8L71,124.8A78,78,0,0,1,124.8966744387541,50.61759172897801L130.31992269003445,67.30863358995796A60.45,60.45,0,0,0,88.55,124.8Z" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+                        <path ng-if="cvdRisk=='30'" fill="#faa001" stroke="none" d="M88.55,124.8L71,124.8A78,78,0,0,1,173.1033255612459,50.61759172897803L167.68007730996558,67.30863358995796A60.45,60.45,0,0,0,88.55,124.8Z" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+                        <path ng-if="cvdRisk=='40'" fill="#fc4f00" stroke="none" d="M88.55,124.8L71,124.8A78,78,0,0,1,212.1033255612459,78.9527503211871L197.90507730996558,89.26838149892001A60.45,60.45,0,0,0,88.55,124.8Z" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+                        <path ng-if="cvdRisk=='50'" fill="#ff0000" stroke="none" d="M88.55,124.8L71,124.8A78,78,0,0,1,227,124.8L209.45,124.8A60.45,60.45,0,0,0,88.55,124.8Z" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+                        <text x="149" y="24.375" text-anchor="middle" font-family="sans-serif" font-size="15px" stroke="none" fill="#999999" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 15px; font-weight: bold; fill-opacity: 1;" font-weight="bold" fill-opacity="1">
+                            <tspan dy="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></tspan>
+                        </text>
+                        <text x="149" y="122.3529411764706" text-anchor="middle" font-family="Arial" font-size="24px" stroke="none" fill="#010101" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: Arial; font-size: 24px; font-weight: bold; fill-opacity: 1;" font-weight="bold" fill-opacity="1">
+                            <tspan dy="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">{{cvdRisk}}</tspan>
+                        </text>
+                        <text x="149" y="139.3529411764706" text-anchor="middle" font-family="Arial" font-size="10px" stroke="none" fill="#b3b3b3" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: Arial; font-size: 10px; font-weight: normal; fill-opacity: 1;" font-weight="normal" fill-opacity="1">
+                            <tspan dy="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Your CVD risk</tspan>
+                        </text>
+                        <text x="79.775" y="139.3529411764706" text-anchor="middle" font-family="Arial" font-size="10px" stroke="none" fill="#b3b3b3" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: Arial; font-size: 10px; font-weight: normal; fill-opacity: 1;" font-weight="normal" fill-opacity="1">
+                            <tspan dy="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">0</tspan>
+                        </text>
+                        <text x="218.225" y="139.3529411764706" text-anchor="middle" font-family="Arial" font-size="10px" stroke="none" fill="#b3b3b3" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: Arial; font-size: 10px; font-weight: normal; fill-opacity: 1;" font-weight="normal" fill-opacity="1">
+                            <tspan dy="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">50</tspan>
+                        </text>
+                    </svg>
+                </div>
+            </div>
             <div><b>Follow-up: </b> {{cvdFollowUP}}</div>
             <div><b>Advice (for provider):</b></div>
             <ul>
@@ -217,9 +254,31 @@
             <!--<div>{{cvdAdvice}}</div>-->
             <div><b>Diabetes Risk: </b>{{diabeteseRisk}}</div>
             <div><b>Diabetes Advice:</b>  {{diabeteseAdvice}}</div>
-            <div></div>
             <div><b>Smoking Advice:</b>  {{smokingAdvice}}</div>
+
+
+                        <!-- <div class="col-xs-12">
+                                    <ul id="advice">
+                                    </ul>
+                                </div> -->
         </main>
+        <div>
+            <h3>Care Plan for Patient</h3>
+            <table>
+               <tr> <th>Goal</th><th>Instructions</th><th>Review</th></tr>
+               <tr ng-repeat="x in cvdAdvice"> <td>{{x}}</td><td>{{management[x]}}</td><td>{{cvdFollowUP}} month(s)</td></tr>
+            </table>
+        </div>
+
+        <div>
+            <h3>Care Plan Monitoring </h3>
+            <table>
+                <tr><th>Item</th><th ng-repeat="x in dates">{{x | bahmniDate}}</th><th>Next Review Date</th></tr>
+                <tr><td>Smoking</td><td ng-repeat="x in smoking">{{smoking?'Yes':'No'}}</td><td>{{reviewDate | bahmniDate}}</td></tr>
+                <tr><td>SBP</td><td ng-repeat="x in sbp">{{x}}</td><td>{{reviewDate | bahmniDate}}</td></tr>
+                <tr><td>DBP</td><td ng-repeat="ax in dbp track by $index">{{ax}}</td><td>{{reviewDate | bahmniDate}}</td></tr>
+            </table>
+        </div>
         <!-- END Main container -->
         </body>
 
