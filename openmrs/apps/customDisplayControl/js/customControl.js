@@ -326,8 +326,11 @@ angular.module('bahmni.common.displaycontrol.custom')
            $scope.smoking = [];
            $scope.sbp = [];
            $scope.dbp = [];
-           $scope.followUpInterval = $scope.groupedObs[$scope.dates[0]].filter(function(item){ return item.conceptNameToDisplay == "Follow Up Interval" })[0].value;
-           $scope.reviewDate = parseInt($scope.dates[0])+$scope.followUpInterval*30*24*3600*1000;
+           $scope.followUpInterval=12;
+           if($scope.dates && $scope.dates.length >0){
+               $scope.followUpInterval = $scope.groupedObs[$scope.dates[0]].filter(function(item){ return item.conceptNameToDisplay == "Follow Up Interval" })[0].value;
+               $scope.reviewDate = parseInt($scope.dates[0])+$scope.followUpInterval*30*24*3600*1000;
+           }
 
            for(var i =0;i<$scope.dates.length;i++){
                $scope.smoking.push($scope.groupedObs[$scope.dates[i]].filter(function(item){ return item.conceptNameToDisplay == "Current" })[0].value);
