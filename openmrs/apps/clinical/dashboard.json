@@ -267,8 +267,8 @@
     },
     "Patient Summary": {
         "translationKey": "DASHBOARD_TAB_PATIENT_SUMMARY_KEY",
-        "displayByDefault":true,
-	"maxRecentlyViewedPatients": 10,
+        "maxRecentlyViewedPatients": 10,
+        "displayByDefault": true,
         "sections": {
             "CVD Risk Assessment": {
                 "type": "custom",

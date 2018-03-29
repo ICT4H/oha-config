@@ -1,211 +1,177 @@
-    <section class="dashboard-section">
-        <h2>
-            {{section.title}}
-        </h2>
-        <!DOCTYPE html>
-        <html lang="en">
+<style>
+    /* line 1, components.scss */
+    .form-group.oha  {
+        width: auto;
+        float: left;
+    }
+    .radio-button-container{
+        float: left;
+        width: auto;
+        display: inline-block;
+    }
+    .radio-button-container label {
+        width:auto !important;
+    }
+    .switch-input {
+        display: none !important;
+    }
 
-        <head>
+    /* line 5, components.scss */
+    .switch-label {
+        position: relative;
+        display: inline-block;
+        width: auto !important;
+        box-sizing: border-box;
+        cursor: pointer;
+        font-weight: 500;
+        text-align: left;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+    /* line 15, components.scss */
+    .switch-label:before, .switch-label:after {
+        content: "";
+        position: absolute;
+        margin: 0;
+        outline: 0;
+        top: 50%;
+        -ms-transform: translate(0, -50%);
+        -webkit-transform: translate(0, -50%);
+        transform: translate(0, -50%);
+        -webkit-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+    }
+    /* line 27, components.scss */
+    .switch-label:before {
+        right: 2px;
+        width: 34px;
+        height: 14px;
+        background-color: #9E9E9E;
+        border-radius: 8px;
+    }
+    /* line 34, components.scss */
+    .switch-label:after {
+        right: 17px;
+        width: 20px;
+        height: 20px;
+        background-color: #FAFAFA;
+        border-radius: 50%;
+        box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.14), 0 2px 2px 0 rgba(0, 0, 0, 0.098), 0 1px 5px 0 rgba(0, 0, 0, 0.084);
+    }
+    /* line 42, components.scss */
+    .switch-label .toggle--on {
+        display: none;
+    }
+    /* line 45, components.scss */
+    .switch-label .toggle--off {
+        display: inline-block;
+    }
 
+    /* line 51, components.scss */
+    .switch-input:checked + .switch-label:before {
+        background-color: #A5D6A7;
+    }
+    /* line 54, components.scss */
+    .switch-input:checked + .switch-label:after {
+        background-color: #4CAF50;
+        -ms-transform: translate(80%, -50%);
+        -webkit-transform: translate(80%, -50%);
+        transform: translate(80%, -50%);
+    }
+    /* line 60, components.scss */
+    .switch-input:checked + .switch-label .toggle--on {
+        display: inline-block;
+    }
+    /* line 63, components.scss */
+    .switch-input:checked + .switch-label .toggle--off {
+        display: none;
+    }
+</style>
+<section class="dashboard-section">
+    <h2 class="section-title">
+        {{section.title}}
+    </h2>
 
-            <!-- Styles -->
-            <link href="/bahmni_config/openmrs/apps/customDisplayControl/css/app.min.css" rel="stylesheet">
-            <link href="/bahmni_config/openmrs/apps/customDisplayControl/css/custom.css" rel="stylesheet">
+    <div>
+    <!-- Main container -->
+    <form >
+        <div class="vitals form-horizontal">
 
-            <!-- Fonts -->
-            <link href='https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,800%7COpen+Sans:300,400,500,600,700,800%7CMontserrat:400,700'
-                  rel='stylesheet' type='text/css'>
+        <fieldset>
 
-            <!-- Favicons -->
-            <link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32">
-            <link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16">
+        <div class="form-group">
 
-            <link href="/bahmni_config/openmrs/apps/customDisplayControl/css/kendo.ui.min.css" rel="stylesheet" />
-            <link href="/bahmni_config/openmrs/apps/customDisplayControl/css/kendo.bootstrap.min.css" rel="stylesheet" />
-            <link href="/bahmni_config/openmrs/apps/customDisplayControl/css/gv.bootstrap-form.css" rel="stylesheet" type="text/css" />
-            <link href="/bahmni_config/openmrs/apps/customDisplayControl/css/app.css" rel="stylesheet">
+                <label for="age" class="control-label">Age</label>
+                <div class="field-value">
 
-            <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-            <!--[if lt IE 9]>
-            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-            <![endif]-->
-            <!-- Fav and touch icons -->
-            <!-- Scripts -->
-
-            <style>
-                .transparent-nav .site-navigation .nav-menu a,
-                .transparent-nav .site-navigation .navbar-toggle {
-                    color: #666 !important;
-                }
-            </style>
-
-            <!-- Favicons -->
-            <link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32">
-            <link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16">
-        </head>
-
-        <body class="sticky-nav transparent-nav">
-
-        <!-- Main container -->
-        <main id="app">
-            <!-- learn more section-->
-            <div class="container">
-                <div class="row m-t-25">
-                    <div class="col-xs-12 col-sm-8">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Configure Request</h3>
-                            </div>
-                            <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-xs-5">
-                                        <form class="form-horizontal">
-                                            <!-- /Form Item -->
-                                            <!--<div class="form-group">-->
-                                                <!--<label for="region" class="col-sm-4 control-label">Region-->
-                                                    <!--<span class="required-sign">*</span>-->
-                                                <!--</label>-->
-                                                <!--<div class="col-sm-8">-->
-                                                    <!--&lt;!&ndash;<select name="region" id="region" class="form-control">&ndash;&gt;-->
-                                                        <!--&lt;!&ndash;<option value="AFRD">&ndash;&gt;-->
-                                                            <!--&lt;!&ndash;AFRD - Algeria, Angola, Benin, Burkina Faso, Cameroon, Cape Verde, Chad, Comoros, Equatorial Guinea, Gabon, Gambia, Ghana,&ndash;&gt;-->
-                                                            <!--&lt;!&ndash;Guinea, Guinea-Bissau, Liberia, Madagascar, Mali, Mauritania, Mauritius,&ndash;&gt;-->
-                                                            <!--&lt;!&ndash;Niger, Nigeria, Sao Tome And Principe, Senegal, Seychelles, Sierra&ndash;&gt;-->
-                                                            <!--&lt;!&ndash;Leone, Togo&ndash;&gt;-->
-                                                        <!--&lt;!&ndash;</option>&ndash;&gt;-->
-                                                        <!--&lt;!&ndash;<option value="AFRE">&ndash;&gt;-->
-                                                            <!--&lt;!&ndash;AFRE - Botswana, Burundi, Central African Republic, Congo, Co^te d’Ivoire, Democratic Republic of The Congo, Eritrea, Ethiopia,&ndash;&gt;-->
-                                                            <!--&lt;!&ndash;Kenya, Lesotho, Malawi, Mozambique, Namibia, Rwanda, South Africa,&ndash;&gt;-->
-                                                            <!--&lt;!&ndash;Swaziland, Uganda, United Republic of Tanzania, Zambia, Zimbabwe&ndash;&gt;-->
-                                                        <!--&lt;!&ndash;</option>&ndash;&gt;-->
-                                                        <!--&lt;!&ndash;<option value="AMRA">AMRA - Canada*, Cuba, United States of America*</option>&ndash;&gt;-->
-                                                        <!--&lt;!&ndash;<option value="AMRB">&ndash;&gt;-->
-                                                            <!--&lt;!&ndash;AMRB - Antigua and Barbuda, Argentina, Bahamas, Barbados, Belize, Brazil, Chile, Colombia, Costa Rica, Dominica, Dominican&ndash;&gt;-->
-                                                            <!--&lt;!&ndash;Republic, El Salvador, Grenada, Guyana, Honduras, Jamaica, Mexico,&ndash;&gt;-->
-                                                            <!--&lt;!&ndash;Panama, Paraguay, Saint Kitts And Nevis, Saint Lucia, Saint Vincent&ndash;&gt;-->
-                                                            <!--&lt;!&ndash;and The Grenadines, Suriname, Trinidad and Tobago, Uruguay, Venezuela&ndash;&gt;-->
-                                                        <!--&lt;!&ndash;</option>&ndash;&gt;-->
-                                                        <!--&lt;!&ndash;<option value="AMRD">&ndash;&gt;-->
-                                                            <!--&lt;!&ndash;AMRD - Bolivia, Ecuador, Guatemala, Haiti, Nicaragua, Peru&ndash;&gt;-->
-                                                        <!--&lt;!&ndash;</option>&ndash;&gt;-->
-                                                        <!--&lt;!&ndash;<option value="EMRB">&ndash;&gt;-->
-                                                            <!--&lt;!&ndash;EMRB - Bahrain, Iran (Islamic Republic of), Jordan, Kuwait, Lebanon, Libyan Arab Jamahiriya, Oman, Qatar, Saudi Arabia, Syrian&ndash;&gt;-->
-                                                            <!--&lt;!&ndash;Arab Republic, Tunisia, United Arab Emirates&ndash;&gt;-->
-                                                        <!--&lt;!&ndash;</option>&ndash;&gt;-->
-                                                        <!--&lt;!&ndash;<option value="EMRD">EMRD - Afghanistan, Djibouti, Egypt, Iraq, Morocco, Pakistan, Somalia,&ndash;&gt;-->
-                                                            <!--&lt;!&ndash;Sudan, Yemen</option>&ndash;&gt;-->
-                                                        <!--&lt;!&ndash;<option value="EURA">EURA - Andorra, Austria, Belgium, Croatia, Cyprus, Czech Republic, Denmark,&ndash;&gt;-->
-                                                            <!--&lt;!&ndash;Finland, France, Germany, Greece, Iceland, Ireland, Israel, Italy,&ndash;&gt;-->
-                                                            <!--&lt;!&ndash;Luxembourg, Malta, Monaco, Netherlands, Norway, Portugal, San Marino,&ndash;&gt;-->
-                                                            <!--&lt;!&ndash;Slovenia, Spain, Sweden, Switzerland, United Kingdom</option>&ndash;&gt;-->
-                                                        <!--&lt;!&ndash;<option value="EURB">EURB - Albania, Armenia, Azerbaijan, Bosnia And Herzegovina, Bulgaria,&ndash;&gt;-->
-                                                            <!--&lt;!&ndash;Georgia, Kyrgyzstan, Poland, Romania, Serbia and Montenegro, Slovakia,&ndash;&gt;-->
-                                                            <!--&lt;!&ndash;Tajikistan, The Former Yugoslav Republic of Macedonia, Turkey, Turkmenistan,&ndash;&gt;-->
-                                                            <!--&lt;!&ndash;Uzbekistan&ndash;&gt;-->
-                                                        <!--&lt;!&ndash;</option>&ndash;&gt;-->
-                                                        <!--&lt;!&ndash;<option value="EURC">EURC - Belarus, Estonia, Hungary, Kazakhstan, Latvia, Lithuania, Republic&ndash;&gt;-->
-                                                            <!--&lt;!&ndash;of Moldova, Russian Federation, Ukraine</option>&ndash;&gt;-->
-                                                        <!--&lt;!&ndash;<option value="SEARB">SEARB - Indonesia, Sri Lanka, Thailand</option>&ndash;&gt;-->
-                                                        <!--&lt;!&ndash;<option value="SEARD">&ndash;&gt;-->
-                                                            <!--&lt;!&ndash;SEARD - Bangladesh, Bhutan, Democratic People’s Republic of Korea, India, Maldives, Myanmar, Nepal&ndash;&gt;-->
-                                                        <!--&lt;!&ndash;</option>&ndash;&gt;-->
-                                                        <!--&lt;!&ndash;<option value="WPRB">WPRB - Cambodia, China, Cook Islands, Democratic People’s Republic of&ndash;&gt;-->
-                                                            <!--&lt;!&ndash;Korea, Fiji, Kiribati, Lao People’s Democratic Republic, Malaysia,&ndash;&gt;-->
-                                                            <!--&lt;!&ndash;Marshall Islands, Micronesia (Federated States of), Mongolia, Nauru,&ndash;&gt;-->
-                                                            <!--&lt;!&ndash;Niue, Palau, Papua New Guinea, Philippines, Samoa, Solomon Islands,&ndash;&gt;-->
-                                                            <!--&lt;!&ndash;Tonga, Tuvalu, Vanuatu, Viet Nam</option>&ndash;&gt;-->
-                                                    <!--&lt;!&ndash;</select>&ndash;&gt;-->
-                                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                                            <!--</div>-->
-                                            <!-- ./Form Item -->
-
-                                            <!--&lt;!&ndash; /Form Item &ndash;&gt;-->
-                                            <div class="form-group">
-                                                <label for="age" class="col-sm-4 control-label">Age</label>
-                                                <div class="col-sm-8">
-                                                    <input  ng-model="oha.age" id="age" type="number" min="30" max="75" step="1" ng-model="oha.age">
-                                                </div>
-                                            </div>
-                                            <!--&lt;!&ndash; ./Form Item &ndash;&gt;-->
-
-                                            <!--&lt;!&ndash; /Form Item &ndash;&gt;-->
-                                            <!--<div class="form-group">-->
-                                                <!--<label for="gender" class="col-sm-4 control-label">Gender-->
-                                                    <!--<span class="required-sign">*</span>-->
-                                                <!--</label>-->
-                                                <!--<div class="col-sm-8">-->
-                                                    <!--<div class="radio">-->
-                                                        <!--<label>-->
-                                                            <!--<input id="mGender" type="radio" name="gender" value="M" ng-model="oha.gender">Male</label>-->
-                                                    <!--</div>-->
-                                                    <!--<div class="radio">-->
-                                                        <!--<label>-->
-                                                            <!--<input id="fGender" type="radio" name="gender" value="F" ng-model="oha.gender" checked>Female</label>-->
-                                                    <!--</div>-->
-                                                <!--</div>-->
-                                            <!--</div>-->
-                                            <!-- ./Form Item -->
-                                        </form>
-                                    </div>
-
-                                    <div class="col-xs-7">
-                                        <form class="form-horizontal">
-                                            <div class="form-group">
-                                                <label for="diabetes" class="col-sm-4 control-label">Has diabetes</label>
-                                                <div class="col-sm-8">
-                                                    <div class="on-off-switch">
-                                                        <input type="checkbox" id="diabetes" ng-model="oha.hasDiabetes" />
-                                                        <label for="diabetes">Toggle</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="smoking" class="col-sm-4 control-label">Smoker</label>
-                                                <div class="on-off-switch col-sm-8">
-                                                    <input type="checkbox" id="smoking" ng-model="oha.isCurrentSmoker"  />
-                                                    <label for="smoking">Toggle</label>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="sbp" class="col-sm-4 control-label">Blood Pressure (SBP)</label>
-                                                <div class="col-sm-8">
-                                                    <input id="sbp" type="number" min="90" max="200" step="1"  ng-model="oha.sbp">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="cholesterol" class="col-sm-4 control-label">Total Cholesterol</label>
-                                                <div class="col-sm-3">
-                                                    <input id="cholesterol" class="form-control" type="number" step="0.1" ng-model="oha.totalCholesterol" >
-                                                </div>
-
-                                                <div class="col-sm-5">
-                                                    <label>
-                                                        <input id="mm" type="radio" name="cholesterolUnit" value="mmol/l" ng-model="oha.cholesterolUnit" checked> mmol/L</label>
-                                                    <label>
-                                                        <input id="mg" type="radio" name="cholesterolUnit" value="mg/dL" ng-model="oha.cholesterolUnit" > mg/dL</label>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <div class="col-sm-8">
-                                                    <input id="submit" type="button" ng-click="calculateHearts()" value="Submit">
-                                                </div>
-                                            </div>
-
-                                        </form>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <input ng-model="oha.age" id="age" type="number" min="30" max="75" step="1" ng-model="oha.age">
                 </div>
-            </div>
+        </div>
+        </fieldset>
 
-            <div class="col-xs-12">
+        <fieldset>
+
+        <div class="form-group">
+
+        <label for="diabetes" class="control-label">Has diabetes</label>
+        <div class="">
+            <div class="">
+                <input type="checkbox" class="switch-input" id="diabetes" ng-model="oha.hasDiabetes"/>
+                <label class="switch-label" for="diabetes"></label>
+            </div>
+        </div>
+        </div>
+        </fieldset>
+
+        <fieldset>
+
+        <div class="form-group">
+
+        <label for="smoking" class="control-label">Smoker</label>
+        <div class="">
+            <input type="checkbox" class="switch-input"  id="smoking"  ng-model="oha.isCurrentSmoker"/>
+            <label class="switch-label" for="smoking"></label>
+        </div>
+        </div>
+        </fieldset>
+
+        <fieldset>
+
+        <div class="form-group">
+            <label for="sbp" class="control-label">Blood Pressure (SBP)</label>
+            <div class="">
+                <input id="sbp" type="number" min="90" max="200" step="1" ng-model="request.data.body.measurements.sbp[0]">
+            </div>
+        </div>
+        </fieldset>
+
+        <fieldset>
+
+        <div class="form-group oha">
+            <label for="cholesterol" class="control-label">Total Cholesterol</label>
+            <input id="cholesterol" class="" type="number" step="0.1" ng-model="oha.totalCholesterol">
+        </div>
+            <div class="radio-button-container">
+            <label><input id="mm" type="radio" name="cholesterolUnit" value="mmol/l" ng-model="data.body.pathology.cholesterol.units"
+                       checked> mmol/L</label>
+                <label><input id="mg" type="radio" name="cholesterolUnit" value="mg/dL" ng-model="data.body.pathology.cholesterol.units">mg/dL</label>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <div class="form-group">
+            <div class="control-label">
+                <input id="submit" type="button" ng-click="calculateHearts()" value="Submit">
+            </div>
+        </div>
+        </fieldset>
+        </div>
+
+    </form>
+    </div>
+
+
+    <div class="col-xs-12">
                 <h2 >CVD Risk</h2>
                 <div id="cvdRisk">
                     <svg height="100%" version="1.1" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="overflow: hidden; position: relative;">
@@ -247,9 +213,7 @@
             <div><b>Follow-up: </b> {{cvdFollowUP}}</div>
             <div><b>Advice (for provider):</b></div>
             <ul>
-                <li ng-repeat="x in cvdAdvice">=> {{x}}</li>
-
-                <!--<li  ng-repeat="advice in {{cvdAdvice}}">-->
+                <li ng-repeat="x in cvdAdvice track by $index">=> {{x}}</li>
             </ul>
             <!--<div>{{cvdAdvice}}</div>-->
             <div><b>Diabetes Risk: </b>{{diabeteseRisk}}</div>
@@ -262,26 +226,41 @@
                                     </ul>
                                 </div> -->
         </main>
-        <div>
+    <hr/>
+    <div ng-if="calculatedRisk">
+        <h3>Current Assesment</h3>
+        <table>
+            <tr> <td>CVD Risk</td><td>{{calculatedRisk}}</td></tr>
+            <tr> <td>Advice/Message:</td><td>{{calculatedMessage}}</td></tr>
+        </table>
+    </div>
+
+
+    <div ng-if="noObs">
+        <h3>CVD Risk Assessment not done before</h3>
+    </div>
+
+
+
+
+    <div>
             <h3>Care Plan for Patient</h3>
             <table>
                <tr> <th>Goal</th><th>Instructions</th><th>Review</th></tr>
-               <tr ng-repeat="x in cvdAdvice"> <td>{{x}}</td><td>{{management[x]}}</td><td>{{cvdFollowUP}} month(s)</td></tr>
+               <tr ng-repeat="x in cvdAdvice   track by $index"> <td>{{x}}</td><td>{{management[x]}}</td><td>{{cvdFollowUP}} month(s)</td></tr>
             </table>
         </div>
 
-        <div>
-            <h3>Care Plan Monitoring </h3>
-            <table>
-                <tr><th>Item</th><th ng-repeat="x in dates">{{x | bahmniDate}}</th><th>Next Review Date</th></tr>
-                <tr><td>Smoking</td><td ng-repeat="x in smoking">{{smoking?'Yes':'No'}}</td><td>{{reviewDate | bahmniDate}}</td></tr>
-                <tr><td>SBP</td><td ng-repeat="x in sbp">{{x}}</td><td>{{reviewDate | bahmniDate}}</td></tr>
-                <tr><td>DBP</td><td ng-repeat="ax in dbp track by $index">{{ax}}</td><td>{{reviewDate | bahmniDate}}</td></tr>
-            </table>
-        </div>
+        <!--<div>-->
+            <!--<h3>Care Plan Monitoring </h3>-->
+            <!--<table>-->
+                <!--<tr><th>Item</th><th ng-repeat="x in dates  track by $index">{{x | bahmniDate}}</th><th>Next Review Date</th></tr>-->
+                <!--<tr><td>Smoking</td><td ng-repeat="x in smoking  track by $index">{{smoking?'Yes':'No'}}</td><td>{{reviewDate | bahmniDate}}</td></tr>-->
+                <!--<tr><td>SBP</td><td ng-repeat="x in sbp  track by $index">{{x}}</td><td>{{reviewDate | bahmniDate}}</td></tr>-->
+                <!--<tr><td>DBP</td><td ng-repeat="ax in dbp   track by $index">{{ax}}</td><td>{{reviewDate | bahmniDate}}</td></tr>-->
+            <!--</table>-->
+        <!--</div>-->
         <!-- END Main container -->
-        </body>
 
-        </html>
     </section>
 </div>
