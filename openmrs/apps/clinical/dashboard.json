@@ -98,13 +98,13 @@
                         "OHA Assessment"
                     ],
                     "showDetailsButton":true,
-                    "numberOfVisits":1
+                    "numberOfVisits":2
                 },
                 "expandedViewConfig":{
                     "conceptNames":[
                         "OHA Assessment"
                     ],
-                    "numberOfVisits":1,
+                    "numberOfVisits":2,
                     "scope":"latest",
                     "showDetailsButton":true,
                     "pivotTable":{
@@ -265,16 +265,17 @@
             }
         }
     },
-    "patientSummary": {
+    "Patient Summary": {
         "translationKey": "DASHBOARD_TAB_PATIENT_SUMMARY_KEY",
-        "maxRecentlyViewedPatients": 10,
+        "displayByDefault":true,
+	"maxRecentlyViewedPatients": 10,
         "sections": {
-            "oha": {
+            "CVD Risk Assessment": {
                 "type": "custom",
                 "displayType": "Full-Page",
                 "displayOrder": 22,
                 "config": {
-                    "title": "OHA",
+                    "title": "CVD Risk Assessment",
                     "template": "<open-health-algorithms section='config' patient='patient'></open-health-algorithms>"
                 }
             }
