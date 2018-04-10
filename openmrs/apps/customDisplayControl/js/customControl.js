@@ -321,7 +321,8 @@ angular.module('bahmni.common.displaycontrol.custom')
             }
 
             var conceptNames = ["Systolic BP","Diastolic BP","Current","Follow Up Interval"];
-            var requestConceptNames = ["Height","Weight","Hip","Waist","BSL Value","Systolic BP","Diastolic BP","CVD Risk","Guidelines, Follow Up Message","HDL","LDL","Current","Follow Up Interval","Total Cholesterol"];
+            var requestConceptNames = ["Height","Weight","Hip","Waist","BSL Value","Systolic BP","Diastolic BP","CVD Risk","Guidelines, Follow Up Message",
+              "HDL","LDL","Current","Guidelines, Follow Up Interval","Total Cholesterol", "Lifestyle Management", "Lipids Management", "BP Management", "Referral"];
             spinner.forPromise(observationsService.fetch($scope.patient.uuid, requestConceptNames, "latest", undefined, $scope.visitUuid, undefined).then(function (response) {
                 var observations = response.data;
                 if (observations.length == 0) {
@@ -374,6 +375,38 @@ angular.module('bahmni.common.displaycontrol.custom')
                         $scope.oha.totalCholesterol = $scope.tc;
                         $scope.request.data.body.pathology.cholesterol.total_chol = $scope.tc;
 
+                    }
+
+                    var lipidsManagement = getValueByName(observations, 'Lipids Management');
+                    var bpManagement = getValueByName(observations, 'BP Management');
+                    var lifestyleManagement = getValueByName(observations, 'Lifestyle Management');
+                    var referralManagement = getValueByName(observations, 'Referral');
+
+                    var management = {};
+                    var cvdAdvice = [];
+
+                    if (lipidsManagement) {
+                        management['lipids'] = lipidsManagement;
+                        cvdAdvice.push('lipids');
+                    }
+                    if (bpManagement) {
+                        management['blood-pressure'] = bpManagement;
+                        cvdAdvice.push('blood-pressure');
+                    }
+                    if (lifestyleManagement) {
+                        management['lifestyle'] = lifestyleManagement;
+                        cvdAdvice.push('lifestyle');
+                    }
+                    if (referralManagement) {
+                        management['referral'] = referralManagement;
+                        cvdAdvice.push('referral');
+                    }
+
+                    if (cvdAdvice.length > 0){
+                        var followUp = getValueByName(observations, 'Follow Up Interval');
+                        $scope.cvdAdvice = cvdAdvice;
+                        $scope.management = management;
+                        $scope.cvdFollowUP = followUp != undefined ? followUp : 3;
                     }
 
 
@@ -471,12 +504,22 @@ angular.module('bahmni.common.displaycontrol.custom')
                     var data = response.data;
 
                     $scope.cvdRisk = data.cvd_assessment.cvd_risk_result ? data.cvd_assessment.cvd_risk_result.risk: 0;
-                    $scope.cvdFollowUP = data.cvd_assessment.guidelines ? data.cvd_assessment.guidelines.follow_up_interval : 3;
-                    $scope.cvdAdvice = data.cvd_assessment.guidelines ? data.cvd_assessment.guidelines.advice : "No Followup";
                     $scope.diabeteseRisk = data.diabetes ? data.diabetes.value : 0;
                     $scope.diabeteseAdvice = data.diabetes.output ? data.diabetes.output[3]? data.diabetes.output[3]:"No Advice" : "No Advice";
                     $scope.smokingAdvice = data.lifestyle.smoking.output ? data.lifestyle.smoking.output[3]? data.lifestyle.smoking.output[3]:"No Advice" : "No Advice";
-                    $scope.management = data.cvd_assessment.guidelines ? data.cvd_assessment.guidelines.management : {};
+
+
+                    if ($scope.cvdFollowUP === undefined || $scope.cvdFollowUP === null) {
+                        $scope.cvdFollowUP = data.cvd_assessment.guidelines ? data.cvd_assessment.guidelines.follow_up_interval : 3;
+                    }
+
+                    if ($scope.cvdAdvice === undefined || $scope.cvdAdvice === null) {
+                        $scope.cvdAdvice = data.cvd_assessment.guidelines ? data.cvd_assessment.guidelines.advice : "No Followup";
+                    }
+
+                    if ($scope.management === undefined || $scope.management === null) {
+                      $scope.management = data.cvd_assessment.guidelines ? data.cvd_assessment.guidelines.management : {};
+                    }
 
                 }));
             }
